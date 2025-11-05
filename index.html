@@ -980,15 +980,149 @@
       
       .table-container {
         max-height: calc(100vh - 450px);
+        overflow-x: hidden;
       }
       
+      /* Mobile Table - Horizontal Compact View */
       .data-table {
-        font-size: 0.85em;
+        font-size: 0.75em;
+        display: block;
+        width: 100%;
       }
       
-      .data-table th,
+      .data-table thead {
+        display: block;
+        width: 100%;
+      }
+      
+      .data-table thead tr {
+        display: flex;
+        width: 100%;
+        background: var(--bg-tertiary);
+      }
+      
+      .data-table th {
+        padding: 10px 4px;
+        font-size: 0.7em;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border-bottom: 2px solid var(--border-color);
+        flex: 1;
+        min-width: 0;
+      }
+      
+      .data-table th:nth-child(1) { flex: 0 0 30px; } /* # */
+      .data-table th:nth-child(2) { flex: 0 0 60px; } /* المعرف */
+      .data-table th:nth-child(3) { flex: 1; } /* الجهاز */
+      .data-table th:nth-child(4) { flex: 0 0 50px; } /* النظام */
+      .data-table th:nth-child(5) { flex: 0 0 50px; } /* المتصفح */
+      .data-table th:nth-child(6) { flex: 0 0 45px; } /* الموافقات */
+      .data-table th:nth-child(7) { flex: 0 0 70px; } /* التاريخ */
+      
+      .data-table tbody {
+        display: block;
+        width: 100%;
+      }
+      
+      .data-table tbody tr {
+        display: flex;
+        width: 100%;
+        border-bottom: 1px solid var(--border-color);
+        align-items: center;
+      }
+      
+      .data-table tbody tr:hover {
+        background: var(--hover-bg);
+        box-shadow: inset 0 0 0 1px var(--primary-color);
+      }
+      
       .data-table td {
-        padding: 12px 16px;
+        padding: 10px 4px;
+        border-bottom: none;
+        text-align: center;
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        position: relative;
+      }
+      
+      .data-table td:nth-child(1) { flex: 0 0 30px; }
+      .data-table td:nth-child(2) { flex: 0 0 60px; }
+      .data-table td:nth-child(3) { flex: 1; }
+      .data-table td:nth-child(4) { flex: 0 0 50px; }
+      .data-table td:nth-child(5) { flex: 0 0 50px; }
+      .data-table td:nth-child(6) { flex: 0 0 45px; }
+      .data-table td:nth-child(7) { flex: 0 0 70px; }
+      
+      /* Compact mobile styles */
+      .user-number {
+        font-size: 0.8em;
+      }
+      
+      .user-id {
+        padding: 4px 6px;
+        font-size: 0.7em;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .device-name {
+        font-size: 0.75em;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .badge {
+        padding: 3px 6px;
+        font-size: 0.65em;
+        gap: 3px;
+        display: inline-flex;
+        max-width: 100%;
+      }
+      
+      .badge span:first-child {
+        font-size: 1.1em;
+      }
+      
+      .badge span:last-child {
+        display: none; /* Hide text, show only icon on mobile */
+      }
+      
+      .clicks-count {
+        padding: 4px 8px;
+        font-size: 0.75em;
+        border-radius: 8px;
+      }
+      
+      .date-time {
+        font-size: 0.65em;
+        display: block;
+        line-height: 1.3;
+      }
+      
+      /* Tooltip on tap for mobile */
+      .data-table td[title]:active::after,
+      .badge[title]:active::after {
+        content: attr(title);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--text-primary);
+        color: var(--bg-primary);
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 0.85em;
+        white-space: nowrap;
+        z-index: 1000;
+        box-shadow: var(--shadow-lg);
+        margin-bottom: 5px;
       }
       
       .modal {
@@ -1009,7 +1143,20 @@
       }
       
       .user-info-horizontal {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      
+      .user-info-item {
+        padding: 12px;
+      }
+      
+      .user-info-label {
+        font-size: 0.7em;
+      }
+      
+      .user-info-value {
+        font-size: 0.85em;
       }
       
       .user-id-section {
@@ -1017,13 +1164,68 @@
         align-items: stretch;
       }
       
+      .user-id-display, .user-id-input {
+        font-size: 0.85em;
+        padding: 10px 14px;
+      }
+      
       .edit-btn, .save-btn, .cancel-btn, .reset-btn {
         width: 100%;
         justify-content: center;
+        padding: 10px 16px;
+        font-size: 0.85em;
+      }
+      
+      .clicks-history-title {
+        font-size: 1.1em;
+        margin-bottom: 16px;
+      }
+      
+      .click-card {
+        padding: 14px;
+        margin-bottom: 12px;
+      }
+      
+      .click-card-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+      
+      .click-number {
+        padding: 6px 12px;
+        font-size: 0.85em;
+        text-align: center;
       }
       
       .click-info-horizontal {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      
+      .click-info-item {
+        gap: 3px;
+      }
+      
+      .click-info-label {
+        font-size: 0.7em;
+      }
+      
+      .click-info-value {
+        font-size: 0.8em;
+      }
+      
+      .click-date-time {
+        padding: 10px 14px;
+        gap: 4px;
+      }
+      
+      .click-date {
+        font-size: 0.85em;
+      }
+      
+      .click-time {
+        font-size: 0.75em;
       }
     }
     
@@ -1041,12 +1243,66 @@
         font-size: 1em;
       }
       
+      .header-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1em;
+      }
+      
       .stat-value {
         font-size: 1.6em;
       }
       
+      .content-header {
+        padding: 12px 16px;
+      }
+      
+      .content-title {
+        font-size: 1em;
+      }
+      
+      .data-table {
+        font-size: 0.7em;
+      }
+      
+      .data-table th {
+        padding: 8px 3px;
+        font-size: 0.65em;
+      }
+      
+      .data-table td {
+        padding: 8px 3px;
+      }
+      
+      .user-id {
+        font-size: 0.65em;
+        padding: 3px 5px;
+      }
+      
+      .device-name {
+        font-size: 0.7em;
+      }
+      
+      .badge {
+        padding: 2px 5px;
+        font-size: 0.6em;
+      }
+      
+      .clicks-count {
+        padding: 3px 6px;
+        font-size: 0.7em;
+      }
+      
+      .date-time {
+        font-size: 0.6em;
+      }
+      
       .click-card {
-        padding: 16px;
+        padding: 12px;
+      }
+      
+      .user-info-horizontal {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -1486,35 +1742,85 @@
         
         const date = latestClick.Date ? new Date(latestClick.Date) : null;
         const dateStr = date ? formatDate(date) : '-';
+        const dateOnly = date ? formatDateOnly(date) : '-';
         
         const displayName = getUserDisplayName(userId);
-        const idDisplay = displayName === userId ? userId.substring(0, 12) + '...' : displayName;
+        const idDisplay = displayName === userId ? userId.substring(0, 8) + '...' : displayName.substring(0, 8);
+        const deviceShort = (latestClick.DeviceModel || 'غير محدد').substring(0, 12);
+        
+        // Get OS and Browser short names for mobile
+        const osShort = getOSShort(latestClick.OS);
+        const browserShort = getBrowserShort(latestClick.Browser);
         
         const row = document.createElement('tr');
         row.onclick = () => showUserDetails(userId);
         
         row.innerHTML = `
-          <td data-label="#">
+          <td title="${index + 1}">
             <span class="user-number">${index + 1}</span>
           </td>
-          <td data-label="المعرف">
+          <td title="${displayName}">
             <span class="user-id">${idDisplay}</span>
           </td>
-          <td data-label="الجهاز">
-            <span class="device-name">${latestClick.DeviceModel || 'غير محدد'}</span>
+          <td title="${latestClick.DeviceModel || 'غير محدد'}">
+            <span class="device-name">${deviceShort}</span>
           </td>
-          <td data-label="النظام">${getOSBadge(latestClick.OS)}</td>
-          <td data-label="المتصفح">${getBrowserBadge(latestClick.Browser)}</td>
-          <td data-label="الموافقات">
+          <td title="${latestClick.OS || 'Unknown'}">${getOSBadgeMobile(latestClick.OS)}</td>
+          <td title="${latestClick.Browser || 'Unknown'}">${getBrowserBadgeMobile(latestClick.Browser)}</td>
+          <td title="${userClicks.length} موافقة">
             <span class="clicks-count">${userClicks.length}</span>
           </td>
-          <td data-label="آخر نشاط">
-            <span class="date-time">${dateStr}</span>
+          <td title="${dateStr}">
+            <span class="date-time">${dateOnly}</span>
           </td>
         `;
         
         tableBody.appendChild(row);
       });
+    }
+    
+    function getOSShort(os) {
+      if (!os) return 'Unknown';
+      if (os.includes('Windows')) return 'Win';
+      if (os.includes('Mac')) return 'Mac';
+      if (os.includes('Android')) return 'And';
+      if (os.includes('iOS')) return 'iOS';
+      if (os.includes('Linux')) return 'Lin';
+      return os.substring(0, 3);
+    }
+    
+    function getBrowserShort(browser) {
+      if (!browser) return 'Unknown';
+      if (browser.includes('Chrome')) return 'Chr';
+      if (browser.includes('Firefox')) return 'Fox';
+      if (browser.includes('Safari')) return 'Saf';
+      if (browser.includes('Edge')) return 'Edg';
+      if (browser.includes('Opera')) return 'Opr';
+      return browser.substring(0, 3);
+    }
+    
+    function getOSBadgeMobile(os) {
+      if (!os) return '<span class="badge badge-other" title="Unknown">❓</span>';
+      
+      if (os.includes('Windows')) return `<span class="badge badge-windows" title="${os}"><span>🪟</span><span>${os}</span></span>`;
+      if (os.includes('Mac')) return `<span class="badge badge-mac" title="${os}"><span>🍎</span><span>${os}</span></span>`;
+      if (os.includes('Android')) return `<span class="badge badge-android" title="${os}"><span>🤖</span><span>${os}</span></span>`;
+      if (os.includes('iOS')) return `<span class="badge badge-ios" title="${os}"><span>📱</span><span>${os}</span></span>`;
+      if (os.includes('Linux')) return `<span class="badge badge-linux" title="${os}"><span>🐧</span><span>${os}</span></span>`;
+      
+      return `<span class="badge badge-other" title="${os}">${os.substring(0, 3)}</span>`;
+    }
+    
+    function getBrowserBadgeMobile(browser) {
+      if (!browser) return '<span class="badge badge-browser-other" title="Unknown">❓</span>';
+      
+      if (browser.includes('Chrome')) return `<span class="badge badge-chrome" title="${browser}"><span>🌐</span><span>${browser}</span></span>`;
+      if (browser.includes('Firefox')) return `<span class="badge badge-firefox" title="${browser}"><span>🦊</span><span>${browser}</span></span>`;
+      if (browser.includes('Safari')) return `<span class="badge badge-safari" title="${browser}"><span>🧭</span><span>${browser}</span></span>`;
+      if (browser.includes('Edge')) return `<span class="badge badge-edge" title="${browser}"><span>🌊</span><span>${browser}</span></span>`;
+      if (browser.includes('Opera')) return `<span class="badge badge-opera" title="${browser}"><span>🎭</span><span>${browser}</span></span>`;
+      
+      return `<span class="badge badge-browser-other" title="${browser}">${browser.substring(0, 3)}</span>`;
     }
     
     function formatDate(date) {
