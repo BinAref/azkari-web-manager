@@ -822,6 +822,36 @@
       font-size: 1em;
     }
     
+    .user-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 2px solid var(--border-color);
+    }
+    
+    .delete-user-btn {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 0.9em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+    }
+    
+    .delete-user-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+    }
+    
     .clicks-history-title {
       font-size: 1.3em;
       color: var(--text-primary);
